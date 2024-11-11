@@ -1,0 +1,20 @@
+{
+    "name": "huizi/dddwork",
+    "description": "A PHP development framework based on Domain-Driven Design (DDD)",
+    "type": "library",
+    "require": {
+        "workerman/workerman": "^4.1"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Huizi\\Dddwork\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "qin.yi",
+            "email": "451309839@qq.com"
+        }
+    ]
+}
