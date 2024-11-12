@@ -1,5 +1,5 @@
 {
-    "name": "huizi/dddwork",
+    "name": "huizi/dddwork-framework",
     "description": "A PHP development framework based on Domain-Driven Design (DDD)",
     "type": "library",
     "require": {
