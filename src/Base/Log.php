@@ -12,15 +12,12 @@
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-namespace Huizi\Dddwork\Internal;
+namespace Huizi\Dddwork\Base;
 
 use Monolog\Formatter\FormatterInterface;
 use Monolog\Handler\FormattableHandlerInterface;
 use Monolog\Handler\HandlerInterface;
 use Monolog\Logger;
-use function array_values;
-use function config;
-use function is_array;
 
 /**
  * Class Log
@@ -51,7 +48,7 @@ class Log
     public static function channel(string $name = 'default'): Logger
     {
         if (!isset(static::$instance[$name])) {
-            $config = config('log', [])[$name];
+            $config = Config::get('log', [])[$name];
             $handlers = self::handlers($config);
             $processors = self::processors($config);
             static::$instance[$name] = new Logger($name, $handlers, $processors);

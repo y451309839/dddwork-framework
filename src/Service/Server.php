@@ -1,13 +1,14 @@
 <?php
 
-namespace Interal;
+namespace Huizi\Dddwork\Service;
 
 use RuntimeException;
 use Workerman\Worker;
-use Huizi\Dddwork\App;
-use Huizi\Dddwork\Internal\Log;
-use Huizi\Dddwork\Internal\Config;
-use Workerman\Protocols\Http\Request;
+use Huizi\Dddwork\Base\Log;
+use Huizi\Dddwork\Base\Path;
+use Huizi\Dddwork\Domain\App;
+use Huizi\Dddwork\Base\Config;
+use Huizi\Dddwork\Value\Http\Request;
 
 class Server {
 
@@ -15,16 +16,16 @@ class Server {
         ini_set('display_errors', 'on');
         error_reporting(E_ALL);
 
-        static::loadAllConfigs(['route']);
+        static::loadAllConfigs();
 
-        $runtimeLogsPath = runtime_path() . DIRECTORY_SEPARATOR . 'logs';
+        $runtimeLogsPath = Path::runtime() . DIRECTORY_SEPARATOR . 'logs';
         if (!file_exists($runtimeLogsPath) || !is_dir($runtimeLogsPath)) {
             if (!mkdir($runtimeLogsPath, 0777, true)) {
-                throw new RuntimeException("Failed to create runtime logs directory. Please check the permission.");
+                throw new RuntimeException("创建运行时日志目录失败: {$runtimeLogsPath}，请检查权限");
             }
         }
 
-        $config = config('server');
+        $config = Config::get('server');
         if ($config['listen']) {
             $worker = new Worker($config['listen'], $config['context']);
             $propertyMap = [
@@ -43,8 +44,7 @@ class Server {
             }
 
             $worker->onWorkerStart = function ($worker) {
-                require_once base_path() . '/support/bootstrap.php';
-                $app = new App(config('app.request_class', Request::class), Log::channel('default'), app_path(), public_path());
+                $app = new App(Config::get('app.request_class', Request::class), Log::channel('default'), Path::app(), Path::public());
                 $worker->onMessage = [$app, 'onMessage'];
                 call_user_func([$app, 'onWorkerStart'], $worker);
             };
@@ -55,7 +55,9 @@ class Server {
 
     public static function loadAllConfigs(array $exclude = [])
     {
-        Config::load(config_path(), $exclude);
+        Config::load(Path::config(), $exclude);
     }
+
+
 
 }

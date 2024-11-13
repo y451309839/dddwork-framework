@@ -1,6 +1,6 @@
 <?php
 
-namespace Huizi\Dddwork\Internal;
+namespace Huizi\Dddwork\Base;
 
 use FilesystemIterator;
 use RecursiveIteratorIterator;
@@ -56,7 +56,7 @@ class Config
         return $allConfig;
     }
 
-    public static function get(string $key = null, string $default = null)
+    public static function get(string $key = null, $default = null)
     {
         if (!static::$loaded) {
             return $default;

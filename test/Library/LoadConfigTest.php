@@ -3,13 +3,13 @@
 namespace Test\Library;
 
 use Test\TestCase;
-use Huizi\Dddwork\Internal\Config;
+use Huizi\Dddwork\Base\Config;
 
 class LoadConfigTest extends TestCase
 {
     public function testloadFromDir()
     {
-        $this->assertEquals(Config::loadFromDir(__DIR__ . '/config', ['exclude']), [
+        $this->assertEquals(Config::loadFromDir(__DIR__ . '/config', ['exclude', 'log', 'server']), [
             'app' => ['app_name' => 'Dddwork Framework'],
             'section' => ['web' => ['domain' => 'http://localhost:8000']]
         ], 'loadFromDir基础方法');

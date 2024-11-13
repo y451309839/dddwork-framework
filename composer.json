@@ -3,6 +3,7 @@
     "description": "A PHP development framework based on Domain-Driven Design (DDD)",
     "type": "library",
     "require": {
+        "php": ">=8.0",
         "workerman/workerman": "^4.1",
         "monolog/monolog": "^2.9"
     },
@@ -23,6 +24,7 @@
         "phpunit/phpunit": "^9.6"
     },
     "scripts": {
-        "test": "vendor/bin/phpunit --do-not-cache-result"
+        "test": "vendor/bin/phpunit --do-not-cache-result",
+        "test-func": "vendor/bin/phpunit --do-not-cache-result --filter"
     }
 }
