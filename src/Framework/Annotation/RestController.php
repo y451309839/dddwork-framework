@@ -1,6 +1,6 @@
 <?php
 
-namespace Huizi\Dddwork\Value\Annotation;
+namespace Huizi\Dddwork\Framework\Annotation;
 
 use Attribute;
 

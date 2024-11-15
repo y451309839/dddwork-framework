@@ -1,0 +1,40 @@
+aggregates:
+  Server:
+    # 框架服务运行管理
+    properties:
+      basePath: string
+
+    entities:
+      app: App
+
+    methods:
+      __construct:
+        parameters:
+          basePath:
+            type: string
+      run:
+      loadAllConfigs:
+        parameters:
+          exclude:
+            type: array<string>
+
+    valueObjects:
+
+    enumObjects:
+  
+  App:
+    # 应用程序
+    properties:
+
+    methods:
+      onWorkerStart:
+        parameters:
+          worker:
+            type: Workerman
+      onMessage:
+        parameters:
+          connection:
+            type: TcpConnection
+          request:
+            type: Request
+

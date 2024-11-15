@@ -1,6 +1,5 @@
 <?php
 
-use Huizi\Dddwork\Base\Path;
 use Huizi\Dddwork\Base\System;
 
 /**
@@ -27,9 +26,9 @@ return [
     'reusePort' => false,
     'event_loop' => '',
     'stop_timeout' => 2,
-    'pid_file' => Path::runtime() . '/webman.pid',
-    'status_file' => Path::runtime() . '/webman.status',
-    'stdout_file' => Path::runtime() . '/logs/stdout.log',
-    'log_file' => Path::runtime() . '/logs/workerman.log',
+    'pid_file' => System::runtimePath() . '/webman.pid',
+    'status_file' => System::runtimePath() . '/webman.status',
+    'stdout_file' => System::runtimePath() . '/logs/stdout.log',
+    'log_file' => System::runtimePath() . '/logs/workerman.log',
     'max_package_size' => 10 * 1024 * 1024
 ];

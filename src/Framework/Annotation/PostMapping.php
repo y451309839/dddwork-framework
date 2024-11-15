@@ -1,6 +1,6 @@
 <?php
 
-namespace Huizi\Dddwork\Annotation;
+namespace Huizi\Dddwork\Framework\Annotation;
 
 class PostMapping extends Mapping
 {

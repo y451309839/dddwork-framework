@@ -1,6 +1,6 @@
 <?php
 
-use Huizi\Dddwork\Base\Path;
+use Huizi\Dddwork\Base\System;
 
 return [
     'default' => [
@@ -8,7 +8,7 @@ return [
             [
                 'class' => Monolog\Handler\RotatingFileHandler::class,
                 'constructor' => [
-                    Path::runtime() . '/logs/webman.log',
+                    System::runtimePath() . '/logs/webman.log',
                     7, //$maxFiles
                     Monolog\Logger::DEBUG,
                 ],

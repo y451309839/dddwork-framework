@@ -2,9 +2,10 @@
 
 namespace Test\Library\Controller;
 
-use Huizi\Dddwork\Annotation\GetMapping;
-use Huizi\Dddwork\Annotation\PostMapping;
-use Huizi\Dddwork\Value\Annotation\RestController;
+use Huizi\Dddwork\Framework\Annotation\GetMapping;
+use Huizi\Dddwork\Framework\Annotation\PostMapping;
+use Huizi\Dddwork\Framework\Annotation\RestController;
+
 
 #[RestController('/users')]
 class User

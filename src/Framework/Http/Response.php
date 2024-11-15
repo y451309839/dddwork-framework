@@ -1,6 +1,6 @@
 <?php
 
-namespace Huizi\Dddwork\Value\Http;
+namespace Huizi\Dddwork\Framework\Http;
 
 use Throwable;
 

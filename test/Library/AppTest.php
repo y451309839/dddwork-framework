@@ -3,9 +3,7 @@
 namespace Test\Library;
 
 use Test\TestCase;
-use Huizi\Dddwork\Service\Server;
-
-define('BASE_PATH', __DIR__);
+use Huizi\Dddwork\Server;
 
 class AppTest extends TestCase
 {
@@ -16,6 +14,7 @@ class AppTest extends TestCase
             $this->assertTrue(true);
             return;
         }
-        Server::run();
+        $server = new Server(__DIR__);
+        $server->run();
     }
 }
